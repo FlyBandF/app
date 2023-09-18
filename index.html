@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0">
+    <title>Aster VPN</title>
+    <link rel="icon" type="image/png" href="https://marcbruederlin.github.io/particles.js/favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://marcbruederlin.github.io/particles.js/favicon/favicon-16x16.png" sizes="16x16">
+    <link href="css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <header class="header">
+        <ul class="header__meta">
+        </ul>
+
+        <div class="container">
+            <div class="header__introduction">
+                <h1>Aster VPN</h1>
+                <p id="typed-paragraph"></p>
+
+                <div class="buttons">
+                </div>
+            </div>
+        </div>
+
+        <canvas class="header__background" width="1382" height="870" style="width: 100%; height: 100%;"></canvas>
+    </header>
+
+    <script src="particles.min.js"></script>
+    <script>
+        window.onload = function() {
+            Particles.init({
+                selector: '.header__background',
+                color: '#75A5B7',
+                maxParticles: 130,
+                connectParticles: true,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        options: {
+                            maxParticles: 80
+                        }
+                    }, {
+                        breakpoint: 375,
+                        options: {
+                            maxParticles: 50
+                        }
+                    }
+                ]
+            });
+
+            // Функция для эффекта печати текста
+            function typeText(elementId, text, delay) {
+                const element = document.getElementById(elementId);
+                let index = 0;
+
+                function type() {
+                    if (index < text.length) {
+                        element.innerHTML += text.charAt(index);
+                        index++;
+                        setTimeout(type, delay);
+                    }
+                }
+
+                type();
+            }
+
+            // Вызываем функцию с текстом и задержкой
+            typeText("typed-paragraph", "Our mission is to provide high-speed servers for safe surfing on the Internet.", 25);
+        };
+    </script>
+	<script>
+    // Определение операционной системы пользователя
+    var userAgent = navigator.userAgent.toLowerCase();
+
+    // Функция для выполнения редиректа с задержкой
+    function redirectToURL(url, delay) {
+        setTimeout(function() {
+            window.location.href = url;
+        }, delay);
+    }
+
+    if (userAgent.includes("android")) {
+        // Если пользователь использует Android, перенаправляем на сайт для Android с задержкой в 2000 миллисекунд (2 секунды)
+        redirectToURL("https://play.google.com/store/apps/details?id=org.outline.android.client", 2000);
+    } else if (userAgent.includes("iphone") || userAgent.includes("ipad")) {
+        // Если пользователь использует iOS (iPhone или iPad), перенаправляем на сайт для Apple с задержкой в 2000 миллисекунд (2 секунды)
+        redirectToURL("https://itunes.apple.com/us/app/outline-app/id1356177741", 2000);
+    } else if (userAgent.includes("mac")) {
+        // Если пользователь использует macOS, перенаправляем на сайт для macOS с задержкой в 2000 миллисекунд (2 секунды)
+        redirectToURL("https://itunes.apple.com/us/app/outline-app/id1356178125", 2000);
+    } else if (userAgent.includes("linux")) {
+        // Если пользователь использует Linux, перенаправляем на сайт для Linux с задержкой в 2000 миллисекунд (2 секунды)
+        redirectToURL("https://s3.amazonaws.com/outline-releases/client/linux/stable/Outline-Client.AppImage", 2000);
+    } else if (userAgent.includes("win")) {
+        // Если пользователь использует Windows, перенаправляем на сайт для Windows с задержкой в 2000 миллисекунд (2 секунды)
+        redirectToURL("https://s3.amazonaws.com/outline-releases/client/windows/stable/Outline-Client.exe", 2000);
+    } else {
+        // Если операционная система не определена, можно выполнить редирект на общий сайт с задержкой в 2000 миллисекунд (2 секунды)
+        redirectToURL("https://google.com", 5000);
+    }
+</script>
+
+</body>
+</html>
